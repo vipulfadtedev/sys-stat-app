@@ -4,7 +4,7 @@ pipeline {
         stage('Build Source') {
             steps {
                 sh 'npm install'
-                sh 'npm build'
+                sh 'npm run build'
             }
         }        
         stage('Build Docker Image') {
