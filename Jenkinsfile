@@ -1,6 +1,12 @@
 pipeline {
     agent any
     stages {
+        stage('Build Source') {
+            steps {
+                sh 'npm install'
+                sh 'npm build'
+            }
+        }        
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t vipulfadtedev/sys-stat-app:latest .'

@@ -5,7 +5,7 @@ import 'chartjs-adapter-moment';
 
 const LineChart = () => {
 
-    const [data, setData] = useState([] as any);
+    const [data, setData] = useState({} as any);
     const colorMap: { [index: string]: string } = {}
     const [colorStore, setColorStore] = useState(colorMap);
 
@@ -38,7 +38,7 @@ const LineChart = () => {
 
     useEffect(() => {
         const run = () => {
-            setData([]);
+            setData({});
             axios.get(`http://10.0.0.7:5000/stats/in-last-hour`)
                 .then((res: { data: any; }) => {
                     const status = res.data;
@@ -59,11 +59,12 @@ const LineChart = () => {
                         }
                     });
 
+                    let datasets: any = {};
                     for (const counter in statusData) {
-                        const datasets = [];
+                        const counters = [];
 
                         for (const key in statusData[counter]) {
-                            datasets.push({
+                            counters.push({
                                 label: key,
                                 data: statusData[counter][key],
                                 backgroundColor: getColor(key),
@@ -71,20 +72,21 @@ const LineChart = () => {
                             });
                         }
 
-                        const options = {
-                            scales: {
-                                x: {
-                                    type: 'time',
-                                    time: {
-                                        displayFormats: {
-                                            second: 'DD-MM-YY hh:mm:ss'
-                                        }
+                        datasets[counter.toLocaleUpperCase()] = {datasets: counters};
+                    }
+                    const options = {
+                        scales: {
+                            x: {
+                                type: 'time',
+                                time: {
+                                    displayFormats: {
+                                        second: 'DD-MM-YY hh:mm:ss'
                                     }
                                 }
                             }
                         }
-                        setData([...data, { options, data: { datasets }, counter: counter.toUpperCase() }]);
                     }
+                    setData({ options, datasets });
                 });
         }
         run()
@@ -97,18 +99,15 @@ const LineChart = () => {
 
     return (
         <div>
-            <ul>
-            {
-                data.map((value: any, index: string) => {
-                    return <li style="position: relative;" key={index}>
-                        <h5 key={value.counter}>{value.counter} Graph: </h5>
-                        <div key={index}> <Line type='line' data={value.data} options={value.options} /></div>
-                    </li>
-                })
-            }
-            </ul>
+            { Object.keys(data.datasets ? data.datasets : {}).map((key, index) => {
+                return <div className="graph" key={index}>
+                    <h5>{key} Graph:</h5>
+                    <div><Line type='line' data={data.datasets[key]} options={data.options} /></div>
+                    <br/><br/><br/><br/><br/>
+                </div>
+            })}
         </div>
-    );
+    )
 };
 
 export default LineChart;

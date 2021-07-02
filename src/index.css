@@ -12,7 +12,12 @@ code {
     monospace;
 }
 
-ul {
+/* ul {
   display: flex;
   list-style: none;
+} */
+
+graph {
+  display: flex;
+  position: relative;
 }
