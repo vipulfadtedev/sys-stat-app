@@ -97,14 +97,16 @@ const LineChart = () => {
 
     return (
         <div>
+            <ul>
             {
                 data.map((value: any, index: string) => {
-                    return <div key={index}>
+                    return <li style="position: relative;" key={index}>
                         <h5 key={value.counter}>{value.counter} Graph: </h5>
                         <div key={index}> <Line type='line' data={value.data} options={value.options} /></div>
-                    </div>
+                    </li>
                 })
             }
+            </ul>
         </div>
     );
 };
