@@ -100,7 +100,7 @@ const LineChart = () => {
             <ul>
             {
                 data.map((value: any, index: string) => {
-                    return <li key={index}>
+                    return <li style="position: relative;" key={index}>
                         <h5 key={value.counter}>{value.counter} Graph: </h5>
                         <div key={index}> <Line type='line' data={value.data} options={value.options} /></div>
                     </li>
