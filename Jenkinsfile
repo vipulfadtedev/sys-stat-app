@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Start new container') {
             steps {
-                sh 'docker run --name sys-stat-app --restart unless-stopped -dp 9090:8080 vipulfadtedev/sys-stat-app:latest'
+                sh 'docker run --name sys-stat-app --restart unless-stopped -dp 9090:80 vipulfadtedev/sys-stat-app:latest'
             }
         }
     }
