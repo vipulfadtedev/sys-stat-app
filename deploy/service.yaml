@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     app: sys-stat-app
-  type: LoadBalancer
+  type: NodePort
   ports:
     - name: http
       protocol: TCP
