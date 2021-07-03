@@ -39,7 +39,7 @@ const LineChart = () => {
     useEffect(() => {
         const run = () => {
             setData({});
-            axios.get(`http://10.0.0.7:5000/stats/in-last-hour`)
+            axios.get(`http://10.0.0.110:9090/stats/in-last-hour`)
                 .then((res: { data: any; }) => {
                     const status = res.data;
 

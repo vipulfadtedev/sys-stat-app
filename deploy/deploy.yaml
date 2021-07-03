@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sys-stat-app-dep
+  namespace: sys-stat
   labels:
     app: sys-stat-app
 spec:

@@ -2,14 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name: sys-stat-app-svc
+  namespace: sys-stat
 spec:
   selector:
     app: sys-stat-app
-  type: NodePort
+  type: LoadBalancer
   ports:
     - name: http
       protocol: TCP
-      port: 9090
+      port: 8080
       targetPort: 80
   externalIPs:
     - 10.0.0.110
