@@ -21,8 +21,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh "sed -i 's|#image#|vipulfadtedev/sys-stat-app:'"$BUILD_NUMBER"'|' deploy/deploy.yaml"
-                sh "kubectl apply -f deploy/."
+                sh 'sed -i "s|#image#|vipulfadtedev/sys-stat-app:"'$BUILD_NUMBER'"|" deploy/deploy.yaml'
+                sh 'kubectl apply -f deploy/.'
             }
         }
     }
