@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sys-stat-app-dep
+  labels:
+    app: sys-stat-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sys-stat-app
+  template:
+    metadata:
+      labels:
+        app: sys-stat-app
+    spec:
+      containers:
+      - name: sys-stat-app
+        image: "vipulfadtedev/sys-stat-app:"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
