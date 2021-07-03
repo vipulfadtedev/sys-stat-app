@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: sys-stat-app
-        image: "vipulfadtedev/sys-stat-app:"
+        image: "#image#"
         imagePullPolicy: Always
         ports:
         - containerPort: 80
