@@ -1,11 +1,9 @@
-import React from 'react';
-import './App.css';
-import LineChart from './components/line-chart';
+import React from "react";
+import "./App.css";
+import LineChart from "./components/line-chart";
 
 const App = () => {
-  return (
-     <LineChart />
-  );
-}
+  return <LineChart />;
+};
 
 export default App;

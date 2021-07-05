@@ -16,8 +16,8 @@ spec:
         app: sys-stat-app
     spec:
       containers:
-      - name: sys-stat-app
-        image: "#image#"
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
+        - name: sys-stat-app
+          image: "#image#"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
